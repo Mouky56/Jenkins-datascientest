@@ -29,7 +29,7 @@ pipeline {
         }
           stage('User Acceptance') {
             steps{
-                input message "Proceed to push to main", ok "Yes"
+                input message: "Proceed to push to main", ok "Yes"
             }
           }
           stage('Pushing and Merging'){
@@ -43,12 +43,12 @@ pipeline {
                       sh 'docker push $DOCKER_ID/$DOCKER_IMAGE:$DOCKER_TAG'
                   }
                 }
+            }
             stage('Merging') {
               steps {
                 echo 'Merging done'
               }
             }
-          }
         }
     }
 }
